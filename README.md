@@ -1,24 +1,13 @@
-# README
+# Helpjuice Query Analytics
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Deployed to Heroku (http://helpjuice-analytics.herokuapp.com/)
 
-Things you may want to cover:
+* Using sidekiq
 
-* Ruby version
+* Client side query strings handling
 
-* System dependencies
+* RSpec tests
 
-* Configuration
+* Responsive
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Reloads every 30 seconds (Live pooling of analytics)

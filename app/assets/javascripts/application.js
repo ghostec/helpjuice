@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  function refresh() {
+    window.location.reload(true);
+  }
+
+  setTimeout(refresh, 30000);
+});
