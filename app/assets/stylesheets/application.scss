@@ -1,0 +1,21 @@
+@import 'bourbon';
+@import 'queries';
+@import 'searches';
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+*, body, html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include calc(width, '100% - 20px');
+  max-width: 600px;
+  margin: 0 auto;
+}

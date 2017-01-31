@@ -1,35 +1,29 @@
 class SearchesController < ApplicationController
   def search
+    @queries = Query.all.order(count: :desc)
   end
 
   def increment
-    search_str = params[:query][:search].downcase
-    query = Query.find_or_initialize_by(search: search_normalized)
-    query.increment_count if query.persisted? else query.save
-    render json: json(query)
+    perform(:increment_count)
   end
 
   def decrement
-    query = Query.find_by(search: search_normalized)
-    (return render json: { errors: [ "Search term not found" ] }) if query.nil?
-    query.decrement_count
-    render json: json(query)
+    perform(:decrement_count)
+  end
+
+  def clean
+    Query.delete_all
+    render json: { status: 200 }
   end
 
   private
 
-  def json(query)
-    {
-      search: query.search,
-      count: query.count
-    }
+  def perform(action)
+    QueryWorker.perform_async(search_normalized, QueryWorker::ACTIONS[action])
+    render json: { status: 200 }
   end
 
   def search_normalized
     params[:query][:search].downcase
-  end
-
-  def query_params
-    params.require(:query).permit(:search)
   end
 end

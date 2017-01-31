@@ -36,6 +36,10 @@ gem 'sprockets', '4.0.0.beta2'
 gem 'babel-transpiler'
 gem 'sprockets-commoner'
 
+gem 'sidekiq'
+
+gem 'bourbon'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

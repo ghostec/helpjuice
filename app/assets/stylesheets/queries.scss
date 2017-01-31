@@ -1,0 +1,38 @@
+queries {
+  margin-top: 30px;
+  magin-bottom: 50px;
+}
+
+query {
+  display: block;
+  padding: 5px 10px;
+  border-bottom: 1px solid #EAEAEA;
+  box-sizing: border-box;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &:last-child {
+    border: none;
+    padding-bottom: none;
+  }
+}
+
+$query-count-max-width: 60px;
+$query-count-min-width: 40px;
+
+query-search {
+  @include calc(width, 100% - #{$query-count-max-width});
+  float: left;
+}
+
+query-count {
+  max-width: 60px;
+  min-width: $query-count-min-width;
+  text-align: right;
+  color: #DA3C2A;
+  float: right;
+}

@@ -1,3 +1,11 @@
-<form>
-  <input id="query" type="text" />
-</form>
+<app>
+  <search>
+    <form>
+      <input id="query" type="text" placeholder="search something..." />
+    </form>
+  </search>
+
+  <queries>
+    <%= render @queries %>
+  </queries>
+</app>

@@ -51,4 +51,12 @@ RSpec.describe SearchesController, type: :controller do
       end
     end
   end
+
+  describe "#clean" do
+    let(:query) { Query.create(search: 'string') }
+
+    before { query }
+
+    it { expect{get :clean}.to change{Query.count}.from(1).to(0) }
+  end
 end

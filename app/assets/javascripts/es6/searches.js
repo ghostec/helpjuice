@@ -19,6 +19,8 @@ const removePrefixQueries = (new_query) => {
 }
 
 const saveQuery = (query) => {
+  if(query.search.replace(/\s/g, '').length == 0) return; // only spaces
+
   removeOldQueries();
   removePrefixQueries(query);
 
