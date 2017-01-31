@@ -1,4 +1,4 @@
-<query id="query-<%= query.search %>">
+<query id="query-<%= query.search.gsub(' ', '--') %>">
   <query-search><%= query.search %></query-search>
   <query-count><%= query.count %></query-count>
 </query>

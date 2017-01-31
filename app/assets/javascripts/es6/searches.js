@@ -1,35 +1,35 @@
 import  { ajaxIncrement, ajaxDecrement } from './ajax';
 import { typingInterval, keepingInterval } from './constants';
 
-let queries = [];
+$(document).on('turbolinks:load', () => {
+  let queries = [];
 
-const removeOldQueries = () => {
-  const time = new Date().getTime();
-  queries = queries.filter((query) => {
-    return (time - query.saved_at.getTime()) < keepingInterval;
-  });
-}
+  const removeOldQueries = () => {
+    const time = new Date().getTime();
+    queries = queries.filter((query) => {
+      return (time - query.saved_at.getTime()) < keepingInterval;
+    });
+  }
 
-const removePrefixQueries = (new_query) => {
-  queries = queries.filter((query) => {
-    const isPrefix = new_query.search.startsWith(query.search);
-    if(isPrefix) ajaxDecrement(query); // decrement/destroy on data store
-    return !isPrefix;
-  });
-}
+  const removePrefixQueries = new_query => {
+    queries = queries.filter((query) => {
+      const isPrefix = new_query.search.startsWith(query.search);
+      if(isPrefix) ajaxDecrement(query); // decrement/destroy on data store
+      return !isPrefix;
+    });
+  }
 
-const saveQuery = (query) => {
-  if(query.search.replace(/\s/g, '').length == 0) return; // only spaces
+  const saveQuery = query => {
+    if(query.search.replace(/\s/g, '').length == 0) return; // only spaces
 
-  removeOldQueries();
-  removePrefixQueries(query);
+    removeOldQueries();
+    removePrefixQueries(query);
 
-  queries.push(query);
+    queries.push(query);
 
-  ajaxIncrement(query); // increment on data store
-}
+    ajaxIncrement(query); // increment on data store
+  }
 
-$(document).ready(() => {
   $('#query').on('keyup', () => {
     const elem = $('#query');
     const val = elem.val();

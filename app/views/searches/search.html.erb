@@ -1,9 +1,9 @@
 <app>
   <search>
     <form>
-      <input id="query" type="text" placeholder="search something..." />
+      <input id="query" type="text" autocomplete="off" placeholder="search something..." />
     </form>
-    <%= link_to('<clean>Clean analytics</clean>'.html_safe, searches_clean_path) %>
+    <clean><%= link_to('Clean analytics', searches_clean_path) %></clean>
   </search>
 
   <queries>

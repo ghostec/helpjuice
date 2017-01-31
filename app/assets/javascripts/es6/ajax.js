@@ -7,20 +7,25 @@ const ajaxAction = (query, action) => {
   });
 }
 
+const genId = query => {
+  return `query-${query.search.replace(/\s/g, '--')}`;
+}
+
 const sumToQueryCount = (query, value) => {
-  const query_count = $(`#query-${query.search}`).find('query-count');
-  const count = parseInt(query_count.html());
+  const $query = $(`#${genId(query)}`);
+  const $query_count = $query.find('query-count');
+  const count = parseInt($query_count.html());
 
-  if(count + value == 0) $(`#query-${query.search}`).remove();
-  else query_count.html(count + value);
+  if(count + value == 0) $query.remove();
+  else $query_count.html(count + value);
 
-  return query_count;
+  return $query_count;
 }
 
 export const ajaxIncrement = query => {
   ajaxAction(query, 'increment').done(response => {
     if(sumToQueryCount(query, 1).length > 0) return;
-    $('queries').append(`<query id="query-${query.search}">
+    $('queries').append(`<query id="${genId(query)}">
                         <query-search>${query.search}</query-search>
                         <query-count>1</query-count>
                         </query>`);
