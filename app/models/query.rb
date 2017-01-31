@@ -15,7 +15,6 @@ class Query < ApplicationRecord
 
   def decrement_count
     self.count -= 1
-    puts self.inspect
     self.count == 0 ? self.destroy : self.save
   end
 end
