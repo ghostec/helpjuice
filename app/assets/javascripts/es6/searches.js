@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', () => {
   const removePrefixQueries = new_query => {
     queries = queries.filter((query) => {
       const isPrefix = new_query.search.startsWith(query.search);
-      if(isPrefix) ajaxDecrement(query); // decrement/destroy on data store
+      if(isPrefix && new_query.search != query.search) ajaxDecrement(query); // decrement/destroy on data store
       return !isPrefix;
     });
   }

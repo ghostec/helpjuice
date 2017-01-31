@@ -13,9 +13,10 @@
 
 a {
   text-decoration: none;
+  color: white;
 }
 
-a:visited { color: inherit; }
+a:visited { color: white; }
 
 app {
   display: flex;
