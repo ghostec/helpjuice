@@ -13,7 +13,8 @@ class SearchesController < ApplicationController
 
   def clean
     Query.delete_all
-    render json: { status: 200 }
+
+    redirect_to :root
   end
 
   private

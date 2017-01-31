@@ -1,3 +1,5 @@
+@import 'common';
+
 queries {
   margin-top: 30px;
   magin-bottom: 50px;
@@ -6,7 +8,7 @@ queries {
 query {
   display: block;
   padding: 5px 10px;
-  border-bottom: 1px solid #EAEAEA;
+  border-bottom: 1px solid $gray;
   box-sizing: border-box;
 
   &:after {
@@ -30,9 +32,9 @@ query-search {
 }
 
 query-count {
-  max-width: 60px;
+  max-width: $query-count-max-width;
   min-width: $query-count-min-width;
   text-align: right;
-  color: #DA3C2A;
+  color: $red;
   float: right;
 }

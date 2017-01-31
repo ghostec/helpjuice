@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: "searches#search"
   put '/searches/increment', to: 'searches#increment'
   put '/searches/decrement', to: 'searches#decrement'
-  get '/searchers/clean', to: 'searches#clean'
+  get '/searchers/clean', to: 'searches#clean', as: 'searches_clean'
 end
